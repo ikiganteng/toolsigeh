@@ -10,3 +10,7 @@
   	* run php bothome.php
 	* enjoy it!
 <br/>
+
+## Thx to
+	*Firdy
+
