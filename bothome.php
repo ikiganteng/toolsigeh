@@ -1,4 +1,5 @@
 <?php
+//ikiganteng
 include 'class_ig.php';
 
 			$data_login = array(
