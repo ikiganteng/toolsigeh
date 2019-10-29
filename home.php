@@ -5,7 +5,6 @@ clear();
 copycat();
 $u = getUsername();
 $p = getPassword();
-$username_target = getUsername('Enter Target Username: ');
 // $u = 'indiramayasari7'; $p = 'Anonymous1704!'; $text = 'Hi!';
 //ikiganteng
 echo '############################################################' . PHP_EOL . PHP_EOL;
