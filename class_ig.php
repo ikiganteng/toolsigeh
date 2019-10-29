@@ -658,7 +658,7 @@ function getFollowersLink($username, $count, $after = '')
     return $url;
 }
 
-function getFollowers($username, $login, $count = 150, $pageSize = 20)
+function getFollowers($username, $login, $count = 20, $pageSize = 20)
 {
     $index = 0;
     $accounts = [];
@@ -671,7 +671,7 @@ function getFollowers($username, $login, $count = 150, $pageSize = 20)
     }
     while (true) {
 
-        $url = getFollowersLink($username, 150, $endCursor);
+        $url = getFollowersLink($username, 20, $endCursor);
         
         if ($url != '') {
             
@@ -919,10 +919,7 @@ function activity($session)
                 'status' => 'success',
                 'username' => $items->node->user->username,
                 'type' => $items->node->type,
-                //'comments' => $result->edge_media_to_comment->count,
-                //'likes' => $result->edge_liked_by->count,
                 'text' => $items->node->text,
-                //'is_video' => $vid
             );
 			}
     return $data;
@@ -945,11 +942,9 @@ function getHome($session)
                 'status' => 'success',
                 'username' => $items->node->owner->username,
                 'id' => $items->node->id,
-                //'comments' => $result->edge_media_to_comment->count,
                 'link' => 'https://instagram.com/p/'.$items->node->shortcode,
-                'text' => $items->node->edge_media_to_caption->edges[0]->node->text,
-                //'is_video' => $vid
-            );
+                'text' => $items->node->edge_media_to_caption->edges[0]->node->text
+			);
 			}
     return $data_ouput;
 }
@@ -970,10 +965,6 @@ function onetap($session)
                 'status' => 'success',
                 'name' => $result->full_name,
                 'username' => $result->username,
-                //'comments' => $result->edge_media_to_comment->count,
-                //'link' => 'https://instagram.com/p/'.$items->node->shortcode,
-                //'text' => $items->node->edge_media_to_caption->edges[0]->node->text,
-                //'is_video' => $vid
             );
     return $data;
 }
