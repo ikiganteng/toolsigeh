@@ -158,7 +158,8 @@ function findProfile($username, $session = 0)
             $is_follow = ($result->followed_by_viewer) ? 'true' : 'false' ;
             $is_private = ($result->is_private) ? 'true' : 'false' ;
             $is_verified = ($result->is_verified) ? 'true' : 'false' ;
-            
+            $is_polbek = ($result->follows_viewer) ? 'true' : 'false' ;
+
             $data = array(
                 'status' => 'success',
                 'username' => $username,
@@ -167,6 +168,7 @@ function findProfile($username, $session = 0)
                 'following' => $result->edge_follow->count,
                 'is_follow' => $is_follow,
                 'is_private' => $is_private,
+		'is_polbek' => $is_polbek,
                 'id' => $result->id,
                 'is_verif' => $is_verified,
                 'post' => $result->edge_owner_to_timeline_media->count,
