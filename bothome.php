@@ -6,6 +6,7 @@ include 'class_ig.php';
 		'csrftoken'	=> 'csrftoken lu',
 		'sessionid'	=> 'sessionid lu'
 	);
+while(true){
 			    $profile = getHome($data_login);
 				$data_array = json_decode($profile);
 			    $result = $data_array->user->edge_web_feed_timeline;
@@ -18,4 +19,6 @@ include 'class_ig.php';
 				}else{
 				echo '[+] Username: '.$username.' |  Like Success'. PHP_EOL;;
 				}
-				}		
+				}
+	sleep(120);
+}
