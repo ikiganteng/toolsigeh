@@ -11,6 +11,15 @@
 	* enjoy it!
 <br/>
 
+## Tutor for fft
+	* git clone https://github.com/ikiganteng/toolsigeh.git
+	* cd toolsigeh
+	* buat file komen dlu isi dgn komen2 buat fftnya pisah dgn |
+	* php fftnew.php
+	* masukkan username, password, file komen & target
+	* enjoy it!
+<br/>
+
 ## Thx to
 	*Firdy
 
