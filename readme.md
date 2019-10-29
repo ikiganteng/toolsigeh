@@ -2,7 +2,7 @@
 
 ## Tutor for bot home
 	* git clone https://github.com/ikiganteng/toolsigeh.git
-	* cd tools-igeh
+	* cd toolsigeh
 	* php home.php
 	* masukkan username, password
   	* nanti akun lu akan tersimpan di instagram.txt
