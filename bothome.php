@@ -6,11 +6,11 @@ include 'class_ig.php';
 		'csrftoken'	=> 'csrftoken lu',
 		'sessionid'	=> 'sessionid lu'
 	);
-while(true){
-			    $profile = getHome($data_login);
+				while(true){
+		     	        $profile = getHome($data_login);
 				$data_array = json_decode($profile);
-			    $result = $data_array->user->edge_web_feed_timeline;
-			    foreach ($result->edges as $items) {
+			        $result = $data_array->user->edge_web_feed_timeline;
+			        foreach ($result->edges as $items) {
 				$id = $items->node->id;
 				$username = $items->node->owner->username;
 				$like = like($id, $data_login);
@@ -20,5 +20,6 @@ while(true){
 				echo '[+] Username: '.$username.' |  Like Success'. PHP_EOL;;
 				}
 				}
-	sleep(120);
-}
+				echo '[+] Tidur selama 120 detik [+]'. PHP_EOL;;
+				sleep(120);
+                }
