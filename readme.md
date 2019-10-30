@@ -29,6 +29,14 @@
 	* enjoy it!
 <br/>
 
+## Tutor for unfollall
+	* git clone https://github.com/ikiganteng/toolsigeh.git
+	* cd toolsigeh
+	* php unfollall.php
+	* masukkan username, password, & sleep
+	* enjoy it!
+<br/>
+
 ## Thx to
 	*Firdy
 
