@@ -15,7 +15,7 @@
 ## Tutor for fft
 	* git clone https://github.com/ikiganteng/toolsigeh.git
 	* cd toolsigeh
-	* buat file komen dlu isi dgn komen2 buat fftnya pisah dgn |
+	* buat file komen dlu isi dgn komen2 buat fftnya pisah dgn | dengan nama komen.txt
 	* php fftnew.php
 	* masukkan username, password, file komen & target
 	* enjoy it!
