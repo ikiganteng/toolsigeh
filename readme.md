@@ -1,14 +1,11 @@
 ## ToolsIgeh
 	* CuRL web instagram.com no Api
 
-## Tutor for bot home
+## Tutor for bot Like home
 	* git clone https://github.com/ikiganteng/toolsigeh.git
 	* cd toolsigeh
-	* php home.php
-	* masukkan username, password
-  	* nanti akun lu akan tersimpan di instagram.txt
-	* edit file bothome.php sesuai akun lu
-  	* run php bothome.php
+	* php botlikehome.php
+	* masukkan username, password & sleep
 	* enjoy it!
 <br/>
 
