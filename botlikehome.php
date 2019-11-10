@@ -25,10 +25,11 @@ $data_login = array('username' => $login['username'],'csrftoken'	=> $login['csrf
 				if ($like['status'] == 'error') {
 				echo '[+] Username: '.$username.' | Media_id: '.$id.' | Error Like' . PHP_EOL;
 				}else{
-				echo '[+] Username: '.$username.' | Media_id: '.$id.' | Like Success'. PHP_EOL;;
+				echo '[+] Username: '.$username.' | Media_id: '.$id.' | Like Success'. PHP_EOL;
 				}
 				}
-				echo '[+] ['.date("H:i:s").'] Tidur selama '.$sleep.' detik [+]'. PHP_EOL;;
+				echo '[+] ['.date("H:i:s").'] Tidur selama '.$sleep.' detik [+]'. PHP_EOL;
 				sleep($sleep);
+				echo '############################################################' . PHP_EOL . PHP_EOL;
                 }
 				} else echo json_encode($login);
