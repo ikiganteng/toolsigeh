@@ -1,5 +1,6 @@
 <?php
 //ikiganteng
+date_default_timezone_set('Asia/Jakarta');
 include 'class_ig.php';
 error_reporting(0);
 clear();
@@ -22,12 +23,12 @@ $data_login = array('username' => $login['username'],'csrftoken'	=> $login['csrf
 				$username = $items->node->owner->username;
 				$like = like($id, $data_login);
 				if ($like['status'] == 'error') {
-				echo '[+] Username: '.$username.' | Error Like' . PHP_EOL;
+				echo '[+] Username: '.$username.' | Media_id: '.$id.' | Error Like' . PHP_EOL;
 				}else{
-				echo '[+] Username: '.$username.' |  Like Success'. PHP_EOL;;
+				echo '[+] Username: '.$username.' | Media_id: '.$id.' | Like Success'. PHP_EOL;;
 				}
 				}
-				echo '[+] Tidur selama '.$sleep.' detik [+]'. PHP_EOL;;
+				echo '[+] ['.date("H:i:s").'] Tidur selama '.$sleep.' detik [+]'. PHP_EOL;;
 				sleep($sleep);
                 }
 				} else echo json_encode($login);
