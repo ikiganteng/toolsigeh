@@ -1,5 +1,6 @@
 <?php
-
+##original by Firdy##
+//edited by ikiganteng
 define("OS", strtolower(PHP_OS));
 header('Content-Type: text/html; charset=utf-8');
 error_reporting(0);
