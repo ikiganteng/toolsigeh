@@ -243,7 +243,8 @@ function login($username, $password)
         $data = array(
             'action' => 'login',
             'status' => 'error',
-            'username' => $username, 
+            'username' => $username,
+	    'details' => $b, 
         );
 
     }elseif(strpos($post, '{"authenticated": true')){
@@ -389,7 +390,8 @@ function follow($username, $session)
             
             $data = array(
                 'status' => 'error',
-                'details' => 'already follow'
+                'details' => 'already to follow',
+                'sleep' => 5,
             );
         }else{
 
@@ -399,10 +401,10 @@ function follow($username, $session)
 			$result = $data_array->entry_data->ProfilePage['0']->graphql->user;
 			$is_follow = ($result->followed_by_viewer) ? 'true' : 'false' ;
             if (strpos($post, 'Location: https://www.instagram.com/accounts/login/') && strpos($post, '302 Found')) {
-                
                 $data = array(
                     'status' => 'error',
-                    'details' => 'you are note logged in'
+                    'details' => 'you are note logged in',
+                     'sleep' => 5,
                 );
             }elseif ($is_follow == 'true') {
                 
@@ -419,7 +421,8 @@ function follow($username, $session)
                     'username' => $username,
                     'action' => 'follow',
                     'status' => 'error',
-                    'details' => $b,
+                    'details' => $b." | Throttled! Resting during 12 hours before try again.",
+                    'sleep' => 43200,
                 );
             }
         }
@@ -432,6 +435,7 @@ function follow($username, $session)
             'username' => $username,
             'action' => 'follow',
             'details' => 'username not found',
+             'sleep' => 5,
         );
     }
 
@@ -639,28 +643,20 @@ function getFollowingLink($username, $count, $after = '')
 function getFollowersLink($username, $count, $after = '')
 {
 
-    $profile = findProfile($username);
-    if (isset($profile['id'])) {
-
-        $accountId = $profile['id'];
-        $url_folls = 'https://www.instagram.com/graphql/query/?query_id=17851374694183129&id={{accountId}}&first={{count}}&after={{after}}';
+        $accountId = $username;
+        $url_folls = 'https://www.instagram.com/graphql/query/?query_hash=c76146de99bb02f6415203be841dd25a&variables={"id":"{{accountId}}","include_reel":true,"fetch_mutual":false,"first":{{count}},"after":"{{after}}"}';
         $url = str_replace('{{accountId}}', urlencode($accountId), $url_folls);
         $url = str_replace('{{count}}', urlencode($count), $url);
         if ($after === '') {
-            $url = str_replace('&after={{after}}', '', $url);
+            $url = str_replace(',"after":"{{after}}"', '', $url);
         } else {
             $url = str_replace('{{after}}', urlencode($after), $url);
         }
-
-    }else{
-
-        $url = '';
-    }
     
     return $url;
 }
 
-function getFollowers($username, $login, $count = 20, $pageSize = 20)
+function getFollowers($username, $login, $count = 150, $pageSize = 20)
 {
     $index = 0;
     $accounts = [];
@@ -673,7 +669,7 @@ function getFollowers($username, $login, $count = 20, $pageSize = 20)
     }
     while (true) {
 
-        $url = getFollowersLink($username, 20, $endCursor);
+        $url = getFollowersLink($username, 150, $endCursor);
         
         if ($url != '') {
             
