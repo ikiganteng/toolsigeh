@@ -38,8 +38,8 @@ if ($login['status'] == 'success') {
 					sleep(rand(70,100));
 					echo PHP_EOL;
 				}else{
-					echo color()["LR"].'(Unfollow @'.$username.' Failed)';
-					sleep(rand(40,60));
+					echo color()["LR"].'(Unfollow @'.$username.' Failed) Throttled! Resting during 10 minutes before try again.';
+					sleep(10*60);		
 					echo PHP_EOL;
 				}
 			}
