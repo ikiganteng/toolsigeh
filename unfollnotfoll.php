@@ -50,5 +50,5 @@ if ($login['status'] == 'success') {
 		echo PHP_EOL;
 	}
 }else{
-	echo color()["LR"].'[ * ] Login as '.$login['username'].' Failed!' . PHP_EOL;
+		echo color()['LR'].'Error: '.ucfirst($login['details'])."" . PHP_EOL;
 }
