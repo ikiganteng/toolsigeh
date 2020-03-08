@@ -31,7 +31,7 @@ if ($login['status'] == 'success') {
 					echo color()["CY"].'[+] '.date('H:i:s').' @'.$username.' | Udh Follback' .PHP_EOL;
 					sleep(1);
 				}else{
-				echo color()["LR"].'[+] '.date('H:i:s').' @'.$username.' | Belom Follback ' ;
+				echo color()["LR"].'[-] '.date('H:i:s').' @'.$username.' | Belom Follback ' ;
 				$unfollow = unfollows($id_user, $data_login);
 				if ($unfollow['status'] == 'success') {
 					echo color()["LG"].' (Unfollow @'.$username.' Success)';
