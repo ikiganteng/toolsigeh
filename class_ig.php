@@ -240,7 +240,8 @@ function login($username, $password)
     ###########
 
     if (strpos($post, '{"authenticated": false')) {
-        
+        $a = getStr($post, '{', '}');
+	$b = '{'.$a.'}';
         $data = array(
             'action' => 'login',
             'status' => 'error',
