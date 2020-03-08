@@ -1,6 +1,6 @@
 <?php
 ##original by Firdy##
-//edited by ikiganteng
+//Edited by ikiganteng
 define("OS", strtolower(PHP_OS));
 header('Content-Type: text/html; charset=utf-8');
 error_reporting(0);
@@ -374,6 +374,21 @@ function unfollow($username, $session)
     return $data;
 }
 
+function unfollows($username, $session)
+{
+        $id = $username;
+        $url = 'https://www.instagram.com/web/friendships/'.$id.'/unfollow/';
+        $header = array(
+                'User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 11_0_1 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A402 Safari/604.1',
+                'X-CSRFToken: '.$session['csrftoken'],
+                'Cookie: csrftoken='.$session['csrftoken'].'; sessionid='.$session['sessionid']
+            );
+        $post = curl($url,1,$header);
+
+        $data = (strpos($post, "Error")) ? array("username" => $username, "action" => "unfollow", "status" => "error") : array("username" => $username, "action" => "unfollow", "status" => "success");
+    
+    return $data;
+}
 
 function follow($username, $session)
 {
