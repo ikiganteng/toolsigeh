@@ -2,13 +2,14 @@
 //ikiganteng
 include 'class_ig.php';
 error_reporting(0);
+date_default_timezone_set('Asia/Jakarta');
 
 clear();
 copycat();
 $u = getUsername();
 $p = getPassword();
 echo PHP_EOL;
-$sleep = getComment('Sleep in seconds: ');
+//$sleep = getComment('Sleep in seconds: ');
 echo '############################################################' . PHP_EOL . PHP_EOL;
 $login = login($u, $p);
 if ($login['status'] == 'success') {
@@ -21,40 +22,33 @@ if ($login['status'] == 'success') {
 	$data_target = findProfile($u, $data_login);
 	echo color()["LG"].'[ # ] Name: '.$data_target['fullname'].' | Followers: '.$data_target['followers'] .' | Following: '.$data_target['following'] . PHP_EOL;
 	if ($data_target['status'] == 'success') {
-		$cmt = 0;
-		for ($i=1; $i < $data_target['following']; $i++) { 
-			$profile = getFollowing($u , $data_login, $i, 1);
+			$profile = getFollowing($u , $data_login, $data_target['following'], 1);
 			foreach ($profile as $rs) {
 				$username = $rs->username;
+				$id_user = $rs->id;
 				$post = findProfile($username, $data_login);
 				if ($post['is_polbek'] == 'true') {
-					echo color()["LR"].'[+] '.$username.' | Udh Follback' .PHP_EOL;
+					echo color()["CY"].'[+] '.date('H:i:s').' @'.$username.' | Udh Follback' .PHP_EOL;
+					sleep(1);
 				}else{
-				echo color()["LR"].'[+] '.$username.' | Belom Follback ' ;
-				$unfollow = unfollow($username, $data_login);
+				echo color()["LR"].'[+] '.date('H:i:s').' @'.$username.' | Belom Follback ' ;
+				$unfollow = unfollows($id_user, $data_login);
 				if ($unfollow['status'] == 'success') {
-					
-					echo color()["LG"].'(Unfollow '.$username.' Success)';
-					sleep($sleep);
+					echo color()["LG"].' (Unfollow @'.$username.' Success)';
+					sleep(rand(70,100));
 					echo PHP_EOL;
 				}else{
-
-					echo color()["LR"].'(Unfollow '.$username.' Failed)';
-					sleep($sleep);
+					echo color()["LR"].'(Unfollow @'.$username.' Failed)';
+					sleep(rand(40,60));
 					echo PHP_EOL;
 				}
-
 			}
 			}
-
-		}
 
 	}else{
-
 		echo 'Error!';
 		echo PHP_EOL;
 	}
 }else{
-
 	echo color()["LR"].'[ * ] Login as '.$login['username'].' Failed!' . PHP_EOL;
 }
